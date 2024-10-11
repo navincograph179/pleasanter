@@ -47,7 +47,7 @@ http://152.165.124.54/pstraining/items/14388/index
 };
    ```
 
-// 採番テーブルを読み、次の年と連番を取得
+// 採番テーブルを読み、次の年と連番を取得 (画面を表示の前設定)
 ```
     let NewYear = new Date().getFullYear();
     let NumData =  items.Get(34496, '{"View":{"ColumnFilterHash":{"Title":"稟議書"}}}');
@@ -59,7 +59,7 @@ http://152.165.124.54/pstraining/items/14388/index
              var NewNum = 1;
         }
 ```
-// 採番テーブル更新
+// 採番テーブル更新　 (作成の前設定)
 ```
         let UpdData = '{"ClassHash": {"ClassB":"' + NewYear + '"}, "NumHash": {"NumA":' + NewNum + '}}';
         let UpdFlg = items.Update(NumData[0].ResultId, UpdData);
