@@ -23,3 +23,4 @@ http://152.165.124.54/pstraining/items/14388/index
 ![スクリーンショット 2024-10-11 134545](https://github.com/user-attachments/assets/6542be4d-d645-407d-8de0-fcb6c579da04)
 
 
+管理№を自動採番する(管理№は「ユニークな頭文字(#SYみたいな) + 今年の年(今だと2024) + 4桁の通し番号」)
