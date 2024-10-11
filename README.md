@@ -29,3 +29,48 @@ http://152.165.124.54/pstraining/items/14388/index
 
 
 3. 管理№を自動採番する(管理№は「ユニークな頭文字(#SYみたいな) + 今年の年(今だと2024) + 4桁の通し番号」)
+   教材フォルダ➔稟議書テーブル➔サバスクリプト
+
+   ```
+   if(model.Title == ""){
+    let NewYear = new Date().getFullYear();
+    let NumData =  items.Get(34496, '{"View":{"ColumnFilterHash":{"Title":"稟議書"}}}');
+    if (NumData.Length > 0) {
+        if (NumData[0].ClassB == NewYear) {
+            var NewNum = NumData[0].NumA + 1;
+        } else {
+             var NewNum = 1;
+        };
+        var RtnData = NumData[0].ClassA + NewYear + ("0000" + NewNum).slice(-4);
+        model.Title = RtnData;
+    };
+};
+   ```
+
+// 採番テーブルを読み、次の年と連番を取得
+```
+    let NewYear = new Date().getFullYear();
+    let NumData =  items.Get(34496, '{"View":{"ColumnFilterHash":{"Title":"稟議書"}}}');
+
+    if (NumData.Length > 0) {
+        if (NumData[0].ClassB == NewYear) {
+            var NewNum = NumData[0].NumA + 1;
+        } else {
+             var NewNum = 1;
+        }
+```
+// 採番テーブル更新
+```
+        let UpdData = '{"ClassHash": {"ClassB":"' + NewYear + '"}, "NumHash": {"NumA":' + NewNum + '}}';
+        let UpdFlg = items.Update(NumData[0].ResultId, UpdData);
+```
+// 画面の管理№更新
+```
+        var RtnData = NumData[0].ClassA + NewYear + ("0000" + NewNum).slice(-4);
+        model.Title = RtnData;
+        model.ClassU = "";
+        model.DateA = new Date(); 
+        model.Manager = context.UserId;
+        model.Owner = context.UserId;
+    }
+```
