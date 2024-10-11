@@ -20,3 +20,6 @@ SiteId(リンクテーブルのサイトID): 14388(社員テーブルのSiteID)
 
 http://152.165.124.54/pstraining/items/14388/index
 
+![スクリーンショット 2024-10-11 134545](https://github.com/user-attachments/assets/6542be4d-d645-407d-8de0-fcb6c579da04)
+
+
